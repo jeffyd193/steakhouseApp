@@ -27,15 +27,15 @@ class TableDetailView(View):
         table_list = Table.objects.filter(category=category)
         availability_tables=[]
         for table in table_list:
-            if check_availability(table, Reservations.check_in, Reservations.check_out):
+            if check_availability(table, data['check_in'], data['check_out']):
                 availability_tables.append(table)
         if len(availability_tables)>0:
             table = availability_tables[0]
             reservations = Reservations.objects.create(
                 user = self.request.user, 
                 table = table,
-                check_in = Reservations.check_in,
-                check_out = Reservations.check_out
+                check_in = data['check_in'],
+                check_out = data['check_out'],
             )
             reservations.save()
             return HttpResponse(reservations)
@@ -51,15 +51,15 @@ class ReservationsView(FormView):
         table_list = Table.objects.filter(category=data['table_category'])
         availability_tables=[]
         for table in table_list:
-            if check_availability(table, Reservations.check_in, Reservations.check_out): #
+            if check_availability(table, data['check_in'], data['check_out']): #
                 availability_tables.append(table)
         if len(availability_tables)>0:
             table = availability_tables[0]
             reservations = Reservations.objects.create(
                 user = self.request.user, 
                 table = table,
-                check_in = Reservations.check_in,
-                check_out = Reservations.check_out
+                check_in = data['check_in'],
+                check_out = data['check_out'],
             )
             reservations.save()
             return HttpResponse(reservations)

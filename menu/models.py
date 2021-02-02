@@ -3,7 +3,7 @@ from django.conf import settings
 
 # Create your models here.
 class Food(models.Model):
-    image = models.ImageField(upload_to='images/')
+    image = models.ImageField(upload_to='images/', default='')
     name = models.CharField(max_length=30, default='Name')
     price = models.IntegerField()
     description = models.CharField(max_length=300, default='Description')

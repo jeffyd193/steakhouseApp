@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Booking List</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        {% for reservations in reservations_list %}
+        <h2>{{reservations}}</h2>
+        <input type="date" id="check_in" name="check_in">
+        <input type="time" id="check_in" name="check_in">
+        <button type="submit">submit</button>
+        
+        {% endfor %}
+        
+        <script src="" async defer></script>
+    </body>
+</html>
